@@ -1,5 +1,5 @@
-import "./ExpenseDate.css";
-import Card from "./Card";
+import "../Expenses/ExpenseDate.css";
+import Card from "../UI/Card";
 function ExpenseDate(data) {
   const month = data.date.toLocaleString("en-US", { month: "long" });
   const year = data.date.getFullYear();
