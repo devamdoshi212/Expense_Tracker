@@ -1,15 +1,16 @@
 import "./ExpenseItem.css";
-import "./ExpenseDate";
 import ExpenseDate from "./ExpenseDate";
-function ExpenseItem(data) {
+import "./Card";
+import Card from "./Card";
+function ExpenseItem(expenseitems) {
   return (
-    <div className="expense-item">
-      <ExpenseDate date={data.date} />
+    <Card className="expense-item">
+      <ExpenseDate date={expenseitems.date} />
       <div className="expense-item__description">
-        <h2>{data.title}</h2>
-        <div className="expense-item__price">${data.amount}</div>
+        <h2>{expenseitems.title}</h2>
+        <div className="expense-item__price">${expenseitems.amount}</div>
       </div>
-    </div>
+    </Card>
   );
 }
 
