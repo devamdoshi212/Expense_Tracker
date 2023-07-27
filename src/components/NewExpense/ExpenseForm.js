@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   // we can make multiple useState like this
   const [EnteredTitle, SetTitle] = useState("");
   const [EnteredAmount, SetAmount] = useState("");
@@ -47,17 +47,21 @@ const ExpenseForm = () => {
   };
 
   const SumbitHandler = (event) => {
+    //sumbit button refresh the page , but we dont want to refresh that page so use event.preventDefault()
     event.preventDefault();
+    // store all data in one object
     const expensesdata = {
       title: EnteredTitle,
       amount: EnteredAmount,
       date: new Date(EnteredTime),
     };
     console.log(expensesdata);
+    props.onSaveExpenseData(expensesdata);
     SetTitle("");
     SetAmount("");
     SetTime("");
   };
+
   return (
     <form onSubmit={SumbitHandler}>
       <div className="new-expense__controls">

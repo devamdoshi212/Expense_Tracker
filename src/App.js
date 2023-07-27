@@ -30,9 +30,18 @@ function App() {
     },
   ];
 
+  const AddExpensestoDummyExpensesHandler = (NewExpenseExpensesData) => {
+    const expensesdata = {
+      ...NewExpenseExpensesData,
+    };
+    console.log(expensesdata);
+  };
+
   return (
     <div className="App">
-      <NewExpense></NewExpense>
+      <NewExpense
+        OnSaveExpenses={AddExpensestoDummyExpensesHandler}
+      ></NewExpense>
       <Expenses items={DummyExpenses}></Expenses>
     </div>
   );

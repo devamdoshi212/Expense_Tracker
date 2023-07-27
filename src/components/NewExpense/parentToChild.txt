@@ -1,0 +1,31 @@
+<input
+            type="text"
+            value={EnteredTitle}
+            onChange={TitleHandler}
+></input>
+
+in input tag "onchange" its react inbuilt props to send data(listener) from parent to child
+
+but sending data from child to family we define our own props 
+like this
+e.g i need  send form data to DummyExpenses which in App.js
+so path => ExpenseForm sends to NewExpense and NewExpense sends to App
+1)
+in New Expense we create props = onSaveExpenseData which calls SaveExpenseDataHandler function
+<ExpenseForm onSaveExpenseData={SaveExpenseDataHandler} />
+2)
+then we create SaveExpenseDataHandler function in New Expense file
+const SaveExpenseDataHandler = (EnteredExpenseData) => {
+    const expensesdata = {
+      ...EnteredExpenseData,
+    };
+    console.log(expensesdata);
+  };
+3)
+set function paramter in ExpenseForm
+parameter=props
+const ExpenseForm = (props) => 
+4)
+send data through function call in ExpenseForm
+props.onSaveExpenseData(expensesdata);
+data=expensesdata
