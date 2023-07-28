@@ -8,14 +8,16 @@ function ExpenseItem(expenseitems) {
     setTitle("Updated!!");
   };
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={expenseitems.date} />
-      <div className="expense-item__description">
-        <h2>{title}</h2>
-        <div className="expense-item__price">${expenseitems.amount}</div>
-        <button onClick={ClickHandler}>Change Title</button>
-      </div>
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={expenseitems.date} />
+        <div className="expense-item__description">
+          <h2>{title}</h2>
+          <div className="expense-item__price">${expenseitems.amount}</div>
+          <button onClick={ClickHandler}>Change Title</button>
+        </div>
+      </Card>
+    </li>
   );
 }
 
