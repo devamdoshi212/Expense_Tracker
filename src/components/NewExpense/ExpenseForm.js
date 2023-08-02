@@ -49,6 +49,29 @@ const ExpenseForm = (props) => {
     // });
   };
 
+  const ValidateDate = (data) => {
+    const currentdate = new Date();
+    const year = currentdate.getFullYear();
+    const month = currentdate.getMonth() + 1;
+    const day = currentdate.getDate();
+
+    const enteryear = data.slice(0, 4);
+    const entermonth = data.slice(5, 7);
+    const enterday = data.slice(8, 10);
+
+    console.log(enteryear, entermonth, enterday);
+
+    if (enteryear > year) {
+      return false;
+    } else {
+      if (entermonth > month) return false;
+      else {
+        if (enterday > day) return false;
+        else return true;
+      }
+    }
+  };
+
   const SumbitHandler = (event) => {
     //sumbit button refresh the page , but we dont want to refresh that page so use event.preventDefault()
     event.preventDefault();
@@ -65,6 +88,10 @@ const ExpenseForm = (props) => {
       EnteredTime.trim().length === 0
     ) {
       Seterror({ title: "Invalid Input", info: "All fields required." });
+      return;
+    } else if (!ValidateDate(EnteredTime)) {
+      Seterror({ title: "Invalid Input", info: "Future Date not allowed" });
+      SetTime("");
       return;
     }
     props.onSaveExpenseData(expensesdata);
@@ -100,6 +127,7 @@ const ExpenseForm = (props) => {
               type="number"
               min="0.01"
               step="0.01"
+              max="1000000000000"
               value={EnteredAmount}
               onChange={AmountHandler}
             ></input>
