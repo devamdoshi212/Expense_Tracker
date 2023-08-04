@@ -59,7 +59,7 @@ const ExpenseForm = (props) => {
     const entermonth = data.slice(5, 7);
     const enterday = data.slice(8, 10);
 
-    console.log(enteryear, entermonth, enterday);
+    // console.log(enteryear, entermonth, enterday);
 
     if (enteryear > year) {
       return false;
